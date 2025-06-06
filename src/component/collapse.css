@@ -1,0 +1,71 @@
+#divCollapse {
+  height: 400px;
+  width: 500px;
+  background: white;
+  padding: 30px;
+}
+
+#btnCollapse {
+  background: rgb(1, 114, 252);
+  padding: 10px;
+  border-radius: 5px;
+  border: 3px solid #a7c2fc;
+  cursor: pointer;
+}
+
+#btnCollapse:hover {
+  background: rgb(1, 91, 201);
+}
+
+#divTextCollapse {
+  white-space: pre-line;
+  border: 1px solid rgb(227, 227, 227);
+  border-radius: 5px;
+  margin: 10px 0 0 0;
+  padding: 20px 15px;
+  overflow: hidden;
+}
+
+.collapseCopy {
+  animation-name: increases;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  Animation-fill-mode: forwards;
+}
+
+@keyframes increases {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-75%);
+  }
+}
+.noCollapseCopy {
+  animation-name: decreasing;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  Animation-fill-mode: forwards;
+}
+
+@keyframes decreasing {
+  from {transform: translateY(-75%);}
+  to {transform: translateY(0%);}
+}
+
+.displayNone {
+  display: none;
+}
+
+.copy {
+  color: gray;
+  text-align: right;
+  padding-top: 30px;
+  cursor: pointer;
+
+  position: absolute;
+  background: white;
+  
+  height: 100px;
+  width: 500px;
+}
