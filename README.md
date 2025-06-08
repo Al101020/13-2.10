@@ -4,3 +4,12 @@ https://al101020.github.io/13-2.10/<br>
 
 # 13-2.10
 Geolocation, Notification, Media
+
+---
+
+npm run lint -- --fix
+
+git status
+git add -A
+git commit -m "commit-0.00"
+git ppush
