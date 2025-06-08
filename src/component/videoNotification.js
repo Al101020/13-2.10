@@ -16,24 +16,24 @@ permissionDiv.classList.add('permissionDiv');
 video2.appendChild(permissionDiv);
 
 function showNotification() {
-    const notification = new Notification('1-это: Текст уведомления', {
-        body: 'Geolocation, Notification, Media',
-        icon: '../src/img/netology.png',
-        image: './src/img/netology2.png',
-    });
+  const notification = new Notification('1-это: Текст уведомления', {
+    body: 'Geolocation, Notification, Media',
+    icon: '../src/img/netology.png',
+    image: './src/img/netology2.png',
+  });
 
-    console.log(notification);
+  console.log(notification);
 }
 
 (async () => {
-    console.log('1');
+  console.log('1');
   if (!window.Notification) {
     console.log('2');
     return;
-  };  
-  
+  }
+
   if (Notification.permission === 'granted') { // если разрешение получено
-    //TODO: show notification
+    // TODO: show notification
     // console.log('granted no query');
     permissionDiv.textContent = 'удовлетворено без запроса(granted no query)';
 
@@ -49,12 +49,11 @@ function showNotification() {
     // console.log(permission);
 
     if (permission) { // если разрешение получено мы также можем показывать уведомления
-      //TODO: show notification
+      // TODO: show notification
     //   console.log('granted after query');
       console.log('5');
       permissionDiv.textContent = 'удовлетворено после запроса(granted after query)';
       showNotification();
-      return;
     }
   }
 })();
