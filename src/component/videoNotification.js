@@ -15,14 +15,40 @@ permissionDiv.textContent = 'разрешение - ?';
 permissionDiv.classList.add('permissionDiv');
 video2.appendChild(permissionDiv);
 
-function showNotification() {
-  const notification = new Notification('1-это: Текст уведомления', {
-    body: 'Geolocation, Notification, Media',
-    icon: '../src/img/netology.png',
-    image: './src/img/netology2.png',
-  });
+const start = performance.now() + 60000;
 
-  console.log(notification);
+function showNotification() {
+  const notifyInterval = setInterval(() => {
+    const currentTime = performance.now();
+
+    const notification = new Notification('1-й аргумент - это: Текст уведомления, 2-й аргумент - это опции(наиболее часто используемые: )',
+      {
+        tag: 'lesson',
+        body: `${Math.round((start - currentTime) / 1000)} секунд осталось`,
+        // body: 'Geolocation, Notification, Media',
+        icon: '../src/img/netology.png',
+        image: './src/img/netology2.png',
+        requireInteraction: true, // чтобы уведомление не скрывалось по истечении времени
+      });
+
+    if (currentTime > start) {
+      clearInterval(notifyInterval);
+
+      notification.close();
+      return;
+    }
+
+    console.log(notification);
+
+    notification.addEventListener('click', () => {
+      notification.close();
+      window.location.href = 'https://netology.ru';
+    });
+
+    notification.addEventListener('close', () => {
+      console.log('close');
+    });
+  }, 1000);
 }
 
 (async () => {
@@ -34,26 +60,24 @@ function showNotification() {
 
   if (Notification.permission === 'granted') { // если разрешение получено
     // TODO: show notification
-    // console.log('granted no query');
     permissionDiv.textContent = 'удовлетворено без запроса(granted no query)';
 
     console.log('3');
-    // showNotification();
+    showNotification(); // запустили функцию для показа уведомления
     return;
   }
 
   if (Notification.permission === 'default') { // если разрешение ещё небыло запрошено
-    const permission = await Notification.requestPermission(); //  спросим разрешение на уведомление
+    // запрашиваем разрешение на уведомление и записывам в переменную permission
+    const permission = await Notification.requestPermission(); // console.log(permission);
 
     console.log('4');
-    // console.log(permission);
 
     if (permission) { // если разрешение получено мы также можем показывать уведомления
       // TODO: show notification
-    //   console.log('granted after query');
       console.log('5');
       permissionDiv.textContent = 'удовлетворено после запроса(granted after query)';
-      showNotification();
+      showNotification(); // запустили функцию для показа уведомления
     }
   }
 })();

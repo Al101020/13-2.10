@@ -7,6 +7,10 @@ Geolocation, Notification, Media
 
 ---
 
+code -n .
+cd 13-2.10
+npm install
+
 npm run lint -- --fix
 
 git status
