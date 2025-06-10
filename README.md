@@ -10,6 +10,7 @@ Geolocation, Notification, Media
 code -n .
 cd 13-2.10
 npm install
+npm start
 
 npm run lint -- --fix
 

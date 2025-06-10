@@ -52,30 +52,25 @@ function showNotification() {
 }
 
 (async () => {
-  console.log('1');
+  // console.log('1');
   if (!window.Notification) {
-    console.log('2');
+    // console.log('2');
     return;
   }
-
   if (Notification.permission === 'granted') { // если разрешение получено
     // TODO: show notification
     permissionDiv.textContent = 'удовлетворено без запроса(granted no query)';
-
-    console.log('3');
+    // console.log('3');
     showNotification(); // запустили функцию для показа уведомления
     return;
   }
-
   if (Notification.permission === 'default') { // если разрешение ещё небыло запрошено
     // запрашиваем разрешение на уведомление и записывам в переменную permission
     const permission = await Notification.requestPermission(); // console.log(permission);
-
-    console.log('4');
+    // console.log('4');
 
     if (permission) { // если разрешение получено мы также можем показывать уведомления
-      // TODO: show notification
-      console.log('5');
+      // TODO: show notification      // console.log('5');
       permissionDiv.textContent = 'удовлетворено после запроса(granted after query)';
       showNotification(); // запустили функцию для показа уведомления
     }
